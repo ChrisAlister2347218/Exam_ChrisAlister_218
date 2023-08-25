@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+	<script type='text/javascript'>
+    function GetMap() {
+        var map = new Microsoft.Maps.Map('#myMap', {
+            credentials: "AnWAfyNeO7LidGhlAJacck9G4ZYq67_wwtPKWy0uI7SJCPpsTXxPrRlOVVgzqNm9"		
+        });
+
+        //Request the user's location
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var loc = new Microsoft.Maps.Location(
+                position.coords.latitude,
+                position.coords.longitude);
+
+            //Add a pushpin at the user's location.
+            var pin = new Microsoft.Maps.Pushpin(loc);
+            map.entities.push(pin);
+
+            //Center the map on the user's location.
+            map.setView({ center: loc, zoom: 15 });
+        });
+    }
+    </script>
+    <link rel="stylesheet" href="test.css">
+
+    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+    <style>
+        body{
+            background-image: url("img/pexels-flo-maderebner-745988.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Culinary Delights</a>
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="home.html">Home</a>
+            <a href="menupage.html">Menu page</a>
+            <a href="contact.html">Contact/Reservation page</a>
+            <a href="about.html">About page</a>
+        </nav>
+    </header>
+    <div><h1 style="height: 150px; width: 150px;font-size: large;margin-left: 50%;">About Us</h1></div>
+    
+    <div id="myMap" style="position:relative;width:600px;height:400px;margin-left:560px;margin-top: 45px;"></div>
+    
+</body>
+</html>
